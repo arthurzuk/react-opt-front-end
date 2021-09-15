@@ -51,7 +51,7 @@ export default function Cadastro() {
         </div>
           <div className="d-grid gap-1">
           <a href='/'>Já possuo conta</a>
-          <a href='/sobre'>Termos de Uso</a>
+          <a href='/uso'>Termos de Uso</a>
           </div>
       </Form>
     </div>
