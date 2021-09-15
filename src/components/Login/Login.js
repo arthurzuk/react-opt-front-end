@@ -59,8 +59,8 @@ export default function Login() {
                 Entrar
             </Button>
             <hr/>
-            <Button variant="Success" type="submit" size="lg">
-                Criar nova conta
+            <Button variant="Success" size="lg" href="cadastro">
+              Criar nova conta
             </Button>
         </div>
       </Form>

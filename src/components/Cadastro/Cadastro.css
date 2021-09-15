@@ -1,0 +1,10 @@
+@media all and (min-width: 480px) {
+    .Cadastro {
+      padding: 50px 0;
+    }
+  
+    .Cadastro form {
+      margin: 0 auto;
+      max-width: 56%;
+    }
+  }
