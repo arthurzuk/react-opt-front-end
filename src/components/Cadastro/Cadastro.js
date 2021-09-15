@@ -1,6 +1,9 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
+import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
+import Row from "react-bootstrap/Row";
+import "./Cadastro.css";
 
 export default function Cadastro() {
   return (
@@ -13,56 +16,43 @@ export default function Cadastro() {
           </Form.Group>
 
           <Form.Group as={Col} controlId="formGridPassword">
-            <Form.Label>Password</Form.Label>
-            <Form.Control type="password" placeholder="Password" />
+            <Form.Label>Senha</Form.Label>
+            <Form.Control type="password" placeholder="Senha" />
           </Form.Group>
         </Row>
 
-        <Form.Group className="mb-3" controlId="formGridAddress1">
-          <Form.Label>Address</Form.Label>
-          <Form.Control placeholder="1234 Main St" />
-        </Form.Group>
-
-        <Form.Group className="mb-3" controlId="formGridAddress2">
-          <Form.Label>Address 2</Form.Label>
-          <Form.Control placeholder="Apartment, studio, or floor" />
+        <Form.Group className="mb-3" controlId="formGridEndereco">
+          <Form.Label>Endereco</Form.Label>
+          <Form.Control placeholder="rua 1234 Cidade" />
         </Form.Group>
 
         <Row className="mb-3">
-          <Form.Group as={Col} controlId="formGridCity">
-            <Form.Label>City</Form.Label>
+          <Form.Group as={Col} controlId="formGridCidade">
+            <Form.Label>Cidade</Form.Label>
             <Form.Control />
           </Form.Group>
 
-          <Form.Group as={Col} controlId="formGridState">
-            <Form.Label>State</Form.Label>
+          <Form.Group as={Col} controlId="formGridEstado">
+            <Form.Label>Estado</Form.Label>
             <Form.Select defaultValue="Choose...">
               <option>Choose...</option>
               <option>...</option>
             </Form.Select>
           </Form.Group>
-
-          <Form.Group as={Col} controlId="formGridZip">
-            <Form.Label>Zip</Form.Label>
-            <Form.Control />
-          </Form.Group>
         </Row>
 
         <Form.Group className="mb-3" id="formGridCheckbox">
-          <Form.Check type="checkbox" label="Check me out" />
+          <Form.Check type="checkbox" label="Aceito os Termos de Uso"/>
         </Form.Group>
         <div className="d-grid gap-2">
-          <Button variant="primary" size="lg">
-            Block level button
-          </Button>
-          <Button variant="secondary" size="lg">
-            Block level button
+          <Button variant="Success" type="submit">
+            Cadastre-se
           </Button>
         </div>
-
-        <Button variant="primary" type="submit">
-          Submit
-        </Button>
+          <div className="d-grid gap-1">
+          <a href='/'>Já possuo conta</a>
+          <a href='/sobre'>Termos de Uso</a>
+          </div>
       </Form>
     </div>
   );
