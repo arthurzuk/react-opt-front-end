@@ -1,4 +1,5 @@
 import React from 'react';
+import Login from './components/Login/Login';
 import './style.css';
 import { blocks_list } from './vars.js';
 
@@ -44,29 +45,33 @@ function block_builder(blocks_list) {
 }
 
 export default function App() {
-  return (
-    <div class="main_container">
-      <div class="menu">Segurança e Privacidade</div>
-      <div id="selected_menu">
-        <div id="selected_title">
-          <label class="content">Segurança e Privacidade</label>
+  if (true) {
+    return <Login />
+  } else {
+    return (
+      <div class="main_container">
+        <div class="menu">Segurança e Privacidade</div>
+        <div id="selected_menu">
+          <div id="selected_title">
+            <label class="content">Segurança e Privacidade</label>
+          </div>
+  
+          <div class="content">
+            <label class="section_title">Dados Pessoais</label>
+            <br />
+            <br />
+  
+            <form action="localhost:3000" method="post">
+              {block_builder(blocks_list)}
+  
+              <input type="submit" value="Salvar alterações" />
+              <label id="error_msg"> </label>
+            </form>
+          </div>
+  
+          <div class="separator" />
         </div>
-
-        <div class="content">
-          <label class="section_title">Dados Pessoais</label>
-          <br />
-          <br />
-
-          <form action="localhost:3000" method="post">
-            {block_builder(blocks_list)}
-
-            <input type="submit" value="Salvar alterações" />
-            <label id="error_msg"> </label>
-          </form>
-        </div>
-
-        <div class="separator" />
       </div>
-    </div>
-  );
+    );
+  }  
 }
