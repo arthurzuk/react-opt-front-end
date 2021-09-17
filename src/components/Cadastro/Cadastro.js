@@ -8,7 +8,7 @@ import "./Cadastro.css";
 export default function Cadastro() {
   return (
     <div className="Cadastro">
-      <Form>
+      <Form role="form" action="https://react-opt-front-end-dr2zf3s1j-arthurzuk.vercel.app/cadastro" method="post">
         <Row className="mb-3">
           <Form.Group as={Col} controlId="formGridEmail">
             <Form.Label>Email</Form.Label>
@@ -34,10 +34,10 @@ export default function Cadastro() {
 
           <Form.Group as={Col} controlId="formGridEstado">
             <Form.Label>Estado</Form.Label>
-            <Form.Select defaultValue="Choose...">
+            <Form.Control as="select" defaultValue="Choose...">
               <option>Choose...</option>
               <option>...</option>
-            </Form.Select>
+            </Form.Control>
           </Form.Group>
         </Row>
 
