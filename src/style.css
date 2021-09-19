@@ -11,19 +11,22 @@ p {
 
 .menu {
   display: table-cell;
-  min-width: 200px;
+  width: 200px;
   border-right: 1px;
-  border-right-color: black;
+  border-right-color: white;
   border-right-style: solid;
-  background-color: aliceblue;
+  background-color: rgba(0,14,101,0.1);
 }
 
 #selected_title {
-  height: 35px;
+  color: white;
+  height: 50px;
   border-bottom: 1px;
+  padding-top: 10px;
   border-bottom-color: black;
   border-bottom-style: solid;
-  background-color: aliceblue;
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(0,14,101,1) 0%, rgba(0,212,255,1) 100%);
+  font: bold 15px Helvetica, Sans-Serif;
   font-size: 25px;
 }
 
