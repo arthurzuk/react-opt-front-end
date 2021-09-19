@@ -1,49 +1,50 @@
-import React, { useState } from "react";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
-import "./Login.css";
+import React, { useState } from 'react';
+import AuthService from '../../services/auth.service.js';
+import { useHistory } from 'react-router-dom';
+
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import './Login.css';
 
 export default function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [errorMsg, setErrorMsg] = useState('');
+  const history = useHistory();
 
-  function validateForm() {
-    return email.length > 0 && password.length > 0;
-  }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  async function loginUser (credentials) {
-    return fetch('http://localhost:3001/auth/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
+    AuthService.login(email, password).then(
+      () => {
+        history.push('/');
       },
-      body: JSON.stringify(credentials)
-    })
-      .then(data => data.json())
-  }
+      (error) => {
+        const resMessage =
+          (error.response &&
+            error.response.data &&
+            error.response.data.message) ||
+          error.message ||
+          error.toString();
 
-  const handleSubmit = async e => {
-    e.preventDefault()
-    const data = await loginUser({
-      email,
-      password
-    })
-    setToken(data.data)
-  }
+        setErrorMsg(resMessage);
+      }
+    );
+  };
 
   return (
     <div className="Login">
-      <Form onSubmit={() => {alert('login')}}>
+      <Form onSubmit={handleSubmit}>
         <Form.Group size="lg" controlId="email">
           <Form.Label>Email</Form.Label>
           <Form.Control
-            autoFocus
+            //autoFocus
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
           <Form.Text className="text-muted">
-           Nós nunca compartilhamos seu email com terceiros.
+            Nós nunca compartilhamos seu email com terceiros.
           </Form.Text>
         </Form.Group>
         <Form.Group size="lg" controlId="password">
@@ -54,14 +55,18 @@ export default function Login() {
             onChange={(e) => setPassword(e.target.value)}
           />
         </Form.Group>
+        <br />
         <div className="d-grid gap-2">
-            <Button variant="outline-primary" type="submit" size="lg">
-                Entrar
-            </Button>
-            <hr/>
-            <Button variant="Success" size="lg" href="cadastro">
-              Criar nova conta
-            </Button>
+          <Button variant="outline-primary" type="submit" size="lg">
+            Entrar
+          </Button>
+          <hr />
+          <Button variant="Success" size="lg" href="cadastro">
+            Criar nova conta
+          </Button>
+        </div>
+        <div>
+          <label> {errorMsg} </label>
         </div>
       </Form>
     </div>
