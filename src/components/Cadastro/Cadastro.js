@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import AuthService from '../../services/auth.service.js';
-
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
+import AuthService from '../../services/auth.service.js';
 import './Cadastro.css';
+
 
 export default function Cadastro() {
   const [email, setEmail] = useState('');
@@ -97,13 +96,13 @@ export default function Cadastro() {
           <Form.Check type="checkbox" label="Aceito os Termos de Uso" />
         </Form.Group>
         <div className="d-grid gap-2">
-          <Button variant="Success" type="submit">
+          <Button variant="Success" type="submit" href="/login">
             Cadastre-se
           </Button>
         </div>
         <div className="d-grid gap-1">
-          <a href="/">Já possuo conta</a>
-          <a href="/uso">Termos de Uso</a>
+          <a href="/login">Já possuo conta</a>
+          <a href="/politicas">Termos de Uso</a>
         </div>
         <div>
           <label> {errorMsg} </label>

@@ -1,12 +1,11 @@
-import React from 'react';
 import React, { useState } from 'react';
-import UserService from '../../../services/user.service.js';
-
-import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-
-import { blocks_list } from './vars.js';
+import Form from 'react-bootstrap/Form';
+import UserService from '../../../services/user.service.js';
 import './Security.css';
+import { blocks_list } from './vars.js';
+
+
 
 class Contact_block extends React.Component {
   render() {

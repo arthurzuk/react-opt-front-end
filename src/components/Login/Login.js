@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import AuthService from '../../services/auth.service.js';
-import { useHistory } from 'react-router-dom';
-
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { useHistory } from 'react-router-dom';
+import AuthService from '../../services/auth.service.js';
 import './Login.css';
+
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -57,7 +57,7 @@ export default function Login() {
         </Form.Group>
         <br />
         <div className="d-grid gap-2">
-          <Button variant="outline-primary" type="submit" size="lg">
+          <Button variant="outline-primary" type="submit" size="lg" href="/">
             Entrar
           </Button>
           <hr />

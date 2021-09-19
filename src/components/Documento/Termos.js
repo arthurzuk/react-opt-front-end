@@ -23,18 +23,6 @@ export default function Termos() {
                     </Card.Body>
                 </Card>
                 </Col>
-                <Col>
-                <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src="https://scontent.fsjk1-1.fna.fbcdn.net/v/t39.8562-6/146473554_955491975260922_1844229405368852616_n.jpg?_nc_cat=102&ccb=1-5&_nc_sid=6825c5&_nc_ohc=zaKc4tgR0rsAX_bnoEE&_nc_ht=scontent.fsjk1-1.fna&oh=76c2a2ab09205bbc0b8f22b998dd7880&oe=61466AA4" />
-                    <Card.Body>
-                        <Card.Title>Termo de Uso</Card.Title>
-                        <Card.Text>
-                        Termos que você concorda quando usa o Site.
-                        </Card.Text>
-                        <Button variant="primary" href="/privacidade">Visitar página</Button>
-                    </Card.Body>
-                    </Card>
-                </Col>
             </Row>
         </Container>
 
