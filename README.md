@@ -2,7 +2,7 @@
 
 [Edit on StackBlitz ⚡️](https://stackblitz.com/edit/react-ywctkj)
 
-https://react-opt-front-end-furkqy8j9-arthurzuk.vercel.app/ Vercel hosting
+https://react-opt-front-end.vercel.app/ Vercel hosting
 
 Subir projeto localmente:
 
