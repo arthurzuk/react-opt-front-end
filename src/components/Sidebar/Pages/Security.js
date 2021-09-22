@@ -40,7 +40,7 @@ class Contact_block extends React.Component {
 function checkbox_builder(n, ids, descriptions, state, setState) {
   var boxes = [];
   for (var i = 0; i < n; i++) {
-    if (state[ids[i]])
+    (function (i) {
       boxes.push(
         <Form.Check
           type="checkbox"
@@ -53,24 +53,10 @@ function checkbox_builder(n, ids, descriptions, state, setState) {
               [ids[i]]: !state[ids[i]],
             }))
           }
-          checked
+          checked={state[ids[i]]}
         ></Form.Check>
       );
-    else
-      boxes.push(
-        <Form.Check
-          type="checkbox"
-          id={ids[i]}
-          value={state[ids[i]]}
-          label={descriptions[i]}
-          onChange={(e) =>
-            setState((prev) => ({
-              ...prev,
-              [ids[i]]: !state[ids[i]],
-            }))
-          }
-        ></Form.Check>
-      );
+    }.call(this, i));
   }
   return boxes;
 }
