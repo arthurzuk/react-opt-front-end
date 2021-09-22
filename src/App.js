@@ -1,5 +1,6 @@
 import React from 'react';
 import Inicial from './components/Inicial';
+import Login from './components/Login/Login';
 import authHeader from './services/auth-header';
 import './style.css';
 
@@ -7,9 +8,7 @@ import './style.css';
 export default function App() {
   const token = authHeader();
 
-  //if (!token.Authorization) {
-    if (false) {
-  } else {
-    return <Inicial />;
-  }
+
+  return <Inicial />;
+
 }

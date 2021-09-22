@@ -57,7 +57,7 @@ export default function Login() {
         </Form.Group>
         <br />
         <div className="d-grid gap-2">
-          <Button variant="outline-primary" type="submit" size="lg" href="/">
+          <Button variant="outline-primary" type="submit" size="lg">
             Entrar
           </Button>
           <hr />

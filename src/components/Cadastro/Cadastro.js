@@ -4,6 +4,7 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import AuthService from '../../services/auth.service.js';
+import { useHistory } from 'react-router-dom';
 import './Cadastro.css';
 
 
@@ -14,13 +15,14 @@ export default function Cadastro() {
   const [cidade, setCidade] = useState('');
   const [estado, setEstado] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
+  const history = useHistory();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     AuthService.cadastro(email, password, endereco, cidade, estado).then(
-      (response) => {
-        setErrorMsg(response.data.message);
+      () => {
+        history.push('/login');
       },
       (error) => {
         const resMessage =
@@ -87,16 +89,16 @@ export default function Cadastro() {
             >
               <option>Choose...</option>
               <option>...</option>
-              <option>teste5</option>
+              <option value="sp">sp</option>
             </Form.Control>
           </Form.Group>
         </Row>
 
         <Form.Group className="mb-3" id="formGridCheckbox">
-          <Form.Check type="checkbox" label="Aceito os Termos de Uso" />
+          <Form.Check type="checkbox" label="Aceito os Termos de Uso" required />
         </Form.Group>
         <div className="d-grid gap-2">
-          <Button variant="Success" type="submit" href="/login">
+          <Button variant="Success" type="submit" >
             Cadastre-se
           </Button>
         </div>

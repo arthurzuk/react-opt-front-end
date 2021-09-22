@@ -1,16 +1,16 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:8000/api/auth/';
+const API_URL = 'http://localhost:8080/api/';
 
 class AuthService {
   async login(email, password) {
     return axios
-      .post(API_URL + 'signin', {
-        email,
-        password,
+      .post(API_URL + 'login', {
+        "username" : email,
+        "password" : password,
       })
       .then((response) => {
-        if (response.data.accessToken) {
+        if (response.data.token) {
           localStorage.setItem('user', JSON.stringify(response.data));
         }
 
@@ -20,15 +20,15 @@ class AuthService {
 
   async cadastro(email, password, endereco, cidade, estado) {
     return axios
-      .post(API_URL + 'signup', {
-        email,
-        password,
-        endereco,
-        cidade,
-        estado,
+      .post(API_URL + 'usuario', {
+            "email" : email,
+            "senha" : password,
+            "logradouro" : endereco,
+            "cidade" : cidade,
+            "ufNome" : estado,
       })
       .then((response) => {
-        return response.data;
+        return response;
       });
   }
 

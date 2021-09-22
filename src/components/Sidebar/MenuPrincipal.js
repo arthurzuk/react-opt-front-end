@@ -2,8 +2,12 @@ import React from "react";
 import { Container } from "react-bootstrap";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+import AuthService from '../../services/auth.service.js';
 
 export default function Menu({ login }) {
+
+  var login = AuthService.getCurrentUser();
+
   return (
     <div>
       <Navbar collapseOnSelect expand="sm" bg="light" variant="light">
@@ -19,14 +23,14 @@ export default function Menu({ login }) {
               </Nav.Link>
             </Nav>
             {
-                login !== true && <Nav>
+                login && <Nav>
                     <Nav.Link eventKey={2} href="/seguranca">
                         Segurança e Privacidade
                     </Nav.Link>
                 </Nav>
             }
             {
-                login !== true && <Nav>
+                !login && <Nav>
                     <Nav.Link eventKey={2} href="/login">
                         Login
                     </Nav.Link>
