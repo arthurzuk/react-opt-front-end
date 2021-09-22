@@ -5,8 +5,6 @@ import UserService from '../../../services/user.service.js';
 import './Security.css';
 import { blocks_list } from './vars.js';
 
-
-
 class Contact_block extends React.Component {
   render() {
     return (
@@ -96,6 +94,29 @@ export function Security() {
     tel_conf: false,
     tel_noti: false,
   });
+
+  const configs = UserService.getConfigs().then(
+    () => {
+      setState[username] = configs[username];
+      setState[endereco] = configs[endereco];
+      setState[email] = configs[email];
+      setState[email_config] = configs[email_config];
+      setState[email_noti] = configs[email_noti];
+      setState[tel] = configs[tel];
+      setState[tel_conf] = configs[tel_conf];
+      setState[tel_noti] = configs[tel_noti];
+    },
+    (error) => {
+      const resMessage =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+
+      setErrorMsg(resMessage);
+    }
+  );
 
   const handleSubmit = async (e) => {
     e.preventDefault();

@@ -15,7 +15,20 @@ class UserService {
       .then((response) => {
         return response.data;
       });
-  }
+  };
+
+  async getConfigs(state) {
+    return axios
+      .post(API_URL + 'getConfigs', {
+        headers: authHeader(),
+      })
+      .then((response) => {
+        return response.data;
+      });
+  };
 }
+
+
+  
 
 export default new UserService();
