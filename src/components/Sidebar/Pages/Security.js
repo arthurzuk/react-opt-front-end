@@ -85,43 +85,50 @@ function block_builder(blocks_list, state, setState) {
 
 export function Security() {
   const [state, setState] = useState({
-    username: '',
     endereco: '',
     email: '',
-    email_conf: false,
-    email_noti: false,
-    tel: '',
-    tel_conf: false,
-    tel_noti: false,
+    consentimentoConfirmacaoEmail: false,
+    consentimentoNotificacaoEmail: false,
+    telefone: '',
+    consentimentoConfirmacaoSms: false,
+    consentimentoNotificicacaoSms: false,
+    isLoading: true
   });
 
-  const configs = UserService.getConfigs().then(
-    () => {
-      setState[username] = configs[username];
-      setState[endereco] = configs[endereco];
-      setState[email] = configs[email];
-      setState[email_config] = configs[email_config];
-      setState[email_noti] = configs[email_noti];
-      setState[tel] = configs[tel];
-      setState[tel_conf] = configs[tel_conf];
-      setState[tel_noti] = configs[tel_noti];
-    },
-    (error) => {
-      const resMessage =
-        (error.response &&
-          error.response.data &&
-          error.response.data.message) ||
-        error.message ||
-        error.toString();
 
-      setErrorMsg(resMessage);
-    }
-  );
+  if (state['isLoading']) {
+        const configs = UserService.getConfigs().then(
+      (response) => {
+        setState((prev) => ({
+                  ...prev,
+                  email : response.usuario.email,
+                  consentimentoConfirmacaoEmail : response.consentimentoConfirmacaoEmail,
+                  consentimentoNotificacaoEmail : response.consentimentoNotificacaoEmail,
+                  telefone : response.usuario.telefone,
+                  consentimentoConfirmacaoSms : response.consentimentoConfirmacaoSms,
+                  consentimentoNotificicacaoSms : response.consentimentoNotificicacaoSms,
+                  endereco : response.usuario.endereco.logradouro,
+                  isLoading : false
+                }));
+      },
+      (error) => {
+        const resMessage =
+          (error.response &&
+            error.response.data &&
+            error.response.data.message) ||
+          error.message ||
+          error.toString();
+
+        setErrorMsg(resMessage);
+      }
+    );
+  }
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    await UserService.update(state['email'], state['tel']).then(
+    await UserService.update(state).then(
       () => {
         setState((prev) => ({
           ...prev,

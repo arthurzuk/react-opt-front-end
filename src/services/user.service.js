@@ -1,17 +1,26 @@
 import axios from 'axios';
 import authHeader from './auth-header';
 
-const API_URL = 'http://localhost:8000/api/test/';
+const API_URL = 'http://localhost:8080/api/termo';
 
 //código para conectar com o backend
 
 class UserService {
   async update(state) {
+  var {consentimentoNotificacaoEmail, consentimentoConfirmacaoEmail, consentimentoNotificicacaoSms, consentimentoConfirmacaoSms, email, telefone, endereco} = state;
     return axios
-      .post(API_URL + 'update', {
+      .put(API_URL, {
+        consentimentoNotificacaoEmail,
+        consentimentoConfirmacaoEmail,
+        consentimentoNotificicacaoSms,
+        consentimentoConfirmacaoSms,
+        email,
+        telefone,
+        endereco
+      }, {
         headers: authHeader(),
-        args: state,
-      })
+      }
+      )
       .then((response) => {
         return response.data;
       });
@@ -19,7 +28,7 @@ class UserService {
 
   async getConfigs(state) {
     return axios
-      .post(API_URL + 'getConfigs', {
+      .get(API_URL, {
         headers: authHeader(),
       })
       .then((response) => {
