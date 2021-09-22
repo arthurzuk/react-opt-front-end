@@ -2,6 +2,8 @@
 
 [Edit on StackBlitz ⚡️](https://stackblitz.com/edit/react-ywctkj)
 
+https://react-opt-front-end-furkqy8j9-arthurzuk.vercel.app/ Vercel hosting
+
 Subir projeto localmente:
 
 Crie um projeto react via comando "npx create-react-app my-app";
