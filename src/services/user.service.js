@@ -7,16 +7,16 @@ const API_URL = 'http://localhost:8080/api/termo';
 
 class UserService {
   async update(state) {
-  var {consentimentoNotificacaoEmail, consentimentoConfirmacaoEmail, consentimentoNotificicacaoSms, consentimentoConfirmacaoSms, email, telefone, endereco} = state;
+  var {consentimentoNotificacaoEmail, consentimentoConfirmacaoEmail, consentimentoNotificacaoSms, consentimentoConfirmacaoSms, email, telefone, logradouro} = state;
     return axios
       .put(API_URL, {
         consentimentoNotificacaoEmail,
         consentimentoConfirmacaoEmail,
-        consentimentoNotificicacaoSms,
+        consentimentoNotificacaoSms,
         consentimentoConfirmacaoSms,
         email,
         telefone,
-        endereco
+        logradouro
       }, {
         headers: authHeader(),
       }

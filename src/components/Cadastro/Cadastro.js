@@ -89,7 +89,7 @@ export default function Cadastro() {
             >
               <option>Choose...</option>
               <option>...</option>
-              <option value="sp">sp</option>
+              <option value="São Paulo">São Paulo</option>
             </Form.Control>
           </Form.Group>
         </Row>

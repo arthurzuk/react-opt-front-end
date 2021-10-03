@@ -85,13 +85,13 @@ function block_builder(blocks_list, state, setState) {
 
 export function Security() {
   const [state, setState] = useState({
-    endereco: '',
+    logradouro: '',
     email: '',
     consentimentoConfirmacaoEmail: false,
     consentimentoNotificacaoEmail: false,
     telefone: '',
     consentimentoConfirmacaoSms: false,
-    consentimentoNotificicacaoSms: false,
+    consentimentoNotificacaoSms: false,
     isLoading: true
   });
 
@@ -107,7 +107,7 @@ export function Security() {
                   telefone : response.usuario.telefone,
                   consentimentoConfirmacaoSms : response.consentimentoConfirmacaoSms,
                   consentimentoNotificicacaoSms : response.consentimentoNotificicacaoSms,
-                  endereco : response.usuario.endereco.logradouro,
+                  logradouro : response.usuario.endereco.logradouro,
                   isLoading : false
                 }));
       },
