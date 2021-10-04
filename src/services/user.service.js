@@ -7,24 +7,35 @@ const API_URL = 'http://localhost:8080/api/termo';
 
 class UserService {
   async update(state) {
-  var {consentimentoNotificacaoEmail, consentimentoConfirmacaoEmail, consentimentoNotificicacaoSms, consentimentoConfirmacaoSms, email, telefone, endereco} = state;
+    var {
+      consentimentoNotificacaoEmail,
+      consentimentoConfirmacaoEmail,
+      consentimentoNotificicacaoSms,
+      consentimentoConfirmacaoSms,
+      email,
+      telefone,
+      endereco,
+    } = state;
     return axios
-      .put(API_URL, {
-        consentimentoNotificacaoEmail,
-        consentimentoConfirmacaoEmail,
-        consentimentoNotificicacaoSms,
-        consentimentoConfirmacaoSms,
-        email,
-        telefone,
-        endereco
-      }, {
-        headers: authHeader(),
-      }
+      .put(
+        API_URL,
+        {
+          consentimentoNotificacaoEmail,
+          consentimentoConfirmacaoEmail,
+          consentimentoNotificicacaoSms,
+          consentimentoConfirmacaoSms,
+          email,
+          telefone,
+          endereco,
+        },
+        {
+          headers: authHeader(),
+        }
       )
       .then((response) => {
         return response.data;
       });
-  };
+  }
 
   async getConfigs(state) {
     return axios
@@ -34,10 +45,7 @@ class UserService {
       .then((response) => {
         return response.data;
       });
-  };
+  }
 }
-
-
-  
 
 export default new UserService();
