@@ -80,7 +80,7 @@ export function Security() {
     consentimentoNotificicacaoSms: false,
     isLoading: true
   });
-
+  
 
   if (state['isLoading']) {
         const configs = UserService.getConfigs().then(

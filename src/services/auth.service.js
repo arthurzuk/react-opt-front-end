@@ -6,8 +6,8 @@ class AuthService {
   async login(email, password) {
     return axios
       .post(API_URL + 'login', {
-        "username" : email,
-        "password" : password,
+        username: email,
+        password: password,
       })
       .then((response) => {
         if (response.data.token) {
@@ -21,21 +21,26 @@ class AuthService {
   async cadastro(email, password, endereco, cidade, estado) {
     return axios
       .post(API_URL + 'usuario', {
-            "email" : email,
-            "senha" : password,
-            "logradouro" : endereco,
-            "cidade" : cidade,
-            "ufNome" : estado,
+        email: email,
+        senha: password,
+        logradouro: endereco,
+        cidade: cidade,
+        ufNome: estado,
       })
       .then((response) => {
         return response;
       });
   }
 
-  
-
-  getCurrentUser() {
-    return JSON.parse(localStorage.getItem('user'));
+  async authUser(answerType) {
+    return axios
+      .post(API_URL + 'auth', {
+        user: JSON.parse(localStorage.getItem('user')),
+        answerType: answerType,
+      })
+      .then((response) => {
+        return response;
+      });
   }
 
   logout() {
