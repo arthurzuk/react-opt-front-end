@@ -3,12 +3,11 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
-import Form from 'react-bootstrap/Form';
+import { useHistory } from 'react-router-dom';
 import AdminService from '../../../../services/admin.service.js';
+import AuthService from '../../../../services/auth.service.js';
 import './Backup.css';
 
-import AuthService from '../../../../services/auth.service.js';
-import { useHistory } from 'react-router-dom';
 
 export default function Backup() {
   const [confirmation1, setConfirmation1] = useState(true);
@@ -151,7 +150,5 @@ export default function Backup() {
     );
   } else {
     alert('Usuário não autenticado');
-    history.push('/');
-    return <div />;
   }
 }
