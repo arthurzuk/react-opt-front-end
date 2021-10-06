@@ -12,7 +12,7 @@ export default function Termos() {
             <Row>
                 <Col>
                 <Card style={{ width: '18rem' }}>
-                    <Card.Img variant="top" src="https://scontent.fsjk1-1.fna.fbcdn.net/v/t39.8562-6/183274093_871820706877722_5650958583013284237_n.jpg?_nc_cat=102&ccb=1-5&_nc_sid=6825c5&_nc_ohc=rTI5cig40roAX88we9f&_nc_ht=scontent.fsjk1-1.fna&oh=a7e33458462cf34c34469848982ae6b8&oe=614659D6" />
+                    <Card.Img variant="top" src="https://st2.depositphotos.com/4202565/6112/v/450/depositphotos_61120345-stock-illustration-business-contract-document.jpg" />
                     <Card.Body>
                         <Card.Title>Política de Privacidade</Card.Title>
                         <Card.Text>
@@ -25,7 +25,23 @@ export default function Termos() {
                 </Col>
             </Row>
         </Container>
-
+        <div class="linha1"></div>
+        <Container fluid="md">
+            <Row>
+                <Col>
+                <Card style={{ width: '18rem' }}>
+                    <Card.Img variant="top" src="https://st4.depositphotos.com/36570844/37924/v/450/depositphotos_379246914-stock-illustration-hand-businessman-holds-questionnaire-certificate.jpg" />
+                    <Card.Body>
+                        <Card.Title>Termo de Uso</Card.Title>
+                        <Card.Text>
+                        Para te  ajudar você a entender as regras regulamentadoras e todos os direitos e obrigações aplicáveis ao usuário do Gymaker
+                        </Card.Text>
+                        <Button variant="primary" href="/termo_uso">Visitar página</Button>
+                    </Card.Body>
+                </Card>
+                </Col>
+            </Row>
+        </Container>
     </div>
   )
 }

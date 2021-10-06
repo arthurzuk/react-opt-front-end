@@ -7,7 +7,6 @@ import AuthService from '../../services/auth.service.js';
 import { useHistory } from 'react-router-dom';
 import './Cadastro.css';
 
-
 export default function Cadastro() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -95,10 +94,14 @@ export default function Cadastro() {
         </Row>
 
         <Form.Group className="mb-3" id="formGridCheckbox">
-          <Form.Check type="checkbox" label="Aceito os Termos de Uso" required />
+          <Form.Check
+            type="checkbox"
+            label="Aceito os Termos de Uso"
+            required
+          />
         </Form.Group>
         <div className="d-grid gap-2">
-          <Button variant="Success" type="submit" >
+          <Button variant="success" type="submit">
             Cadastre-se
           </Button>
         </div>

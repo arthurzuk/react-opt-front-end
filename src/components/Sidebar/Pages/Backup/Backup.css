@@ -1,0 +1,21 @@
+.Admin {
+  padding: 50px 0;
+  margin: 0 auto;
+  max-width: 56%;
+}
+
+.txt_submit {
+
+  max-width: 400px;
+}
+
+.btn_submit {
+
+  max-width: 150px;
+}
+
+.form_spacer{
+  margin-bottom:50px;
+
+
+}

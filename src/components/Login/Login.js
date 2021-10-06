@@ -26,7 +26,6 @@ export default function Login() {
             error.response.data.message) ||
           error.message ||
           error.toString();
-
         setErrorMsg(resMessage);
       }
     );
