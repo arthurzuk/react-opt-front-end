@@ -5,7 +5,6 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import { useHistory } from 'react-router-dom';
 import AdminService from '../../../../services/admin.service.js';
-import AuthService from '../../../../services/auth.service.js';
 import './Backup.css';
 
 
@@ -113,35 +112,6 @@ export default function Backup() {
                 disabled={confirmation2}
               >
                 Realizar Backup
-              </Button>
-            </Row>
-          </Form>
-        </div>
-        <div className="form_spacer">
-          <div> Enviar emails de atualiazação de termos de privacidade </div>
-          <Form onSubmit={handleSubmitBackup}>
-            <Row>
-              <Form.Group as={Col} controlId="formGridEmail">
-                <Form.Control
-                  className="txt_submit"
-                  onChange={(e) => {
-                    if (e.target.value === 'Solicito o envio de emails')
-                      setConfirmation3(false);
-                    else setConfirmation3(true);
-                  }}
-                  type="text"
-                />
-                <Form.Label>
-                  Digite 'Solicito o envio de emails' para habilitar o botão
-                </Form.Label>
-              </Form.Group>
-              <Button
-                className="btn_submit"
-                variant="danger"
-                type="submit"
-                disabled={confirmation3}
-              >
-                Enviar Emails
               </Button>
             </Row>
           </Form>
