@@ -14,7 +14,7 @@ export default function Backup() {
   const [confirmation2, setConfirmation2] = useState(true);
   const [confirmation3, setConfirmation3] = useState(true);
   const history = useHistory();
-  var login = AuthService.authUser('adminAuth');
+  // var login = AuthService.authUser('adminAuth');
 
   const handleSubmitEmail = async (e) => {
     e.preventDefault();

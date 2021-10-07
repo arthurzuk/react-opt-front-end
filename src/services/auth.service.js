@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:8080/api/';
+const API_URL = 'https://8080-pink-meadowlark-1ttvujjs.ws-us18.gitpod.io/api/';
 
 class AuthService {
   async login(email, password) {
@@ -32,16 +32,16 @@ class AuthService {
       });
   }
 
-  async authUser(answerType) {
-    return axios
-      .post(API_URL + 'auth', {
-        user: JSON.parse(localStorage.getItem('user')),
-        answerType: answerType,
-      })
-      .then((response) => {
-        return response;
-      });
-  }
+  // async authUser(answerType) {
+  //       return axios
+  //           .post(API_URL + 'auth', {
+  //               user: JSON.parse(localStorage.getItem('user')),
+  //               answerType: answerType,
+  //           })
+  //           .then((response) => {
+  //               return response;
+  //           });
+  //   }
 
   logout() {
     localStorage.removeItem('user');

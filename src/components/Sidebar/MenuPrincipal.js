@@ -5,7 +5,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import AuthService from '../../services/auth.service.js';
 
 export default function Menu({ login }) {
-  var login = AuthService.authUser();
+  // var login = AuthService.authUser();
 
   return (
     <div>
