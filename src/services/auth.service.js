@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'https://8080-pink-meadowlark-1ttvujjs.ws-us18.gitpod.io/api/';
+const API_URL = 'http://localhost:8080/api/';
 
 class AuthService {
   async login(email, password) {
