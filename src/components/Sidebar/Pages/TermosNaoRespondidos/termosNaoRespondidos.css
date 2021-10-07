@@ -1,0 +1,14 @@
+.container-table {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 10% 0;
+}
+
+.button-enviar-emails {
+    margin-bottom: 14px;
+}
+
+.alert {
+    max-width: 960px;
+    margin: 14px auto;
+}

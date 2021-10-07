@@ -17,8 +17,15 @@ class AdminService {
       });
   }
 
+  async listaUsuariosSemTermoAtualizado() {
+    return axios.post(API_URL + 'admin/termo/listaUsuariosSemTermoAtualizado', {})
+    .then(response => {
+      return response
+    })
+  }
+
   async sendMail() {
-    return axios.post(API_URL + 'admin/termo/enviar-emails', {})
+    return axios.post(API_URL + 'admin/termo/emailUsuariosSemTermoAtualizado', {})
     .then(response => {
       return response
     })

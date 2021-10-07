@@ -10,6 +10,7 @@ import TermoUso from "./components/Documento/TermoUso";
 import Login from "./components/Login/Login";
 import MenuPrincipal from "./components/Sidebar/MenuPrincipal";
 import Backup from "./components/Sidebar/Pages/Backup/Backup";
+import { TermosNaoRespondidos } from "./components/Sidebar/Pages/TermosNaoRespondidos/TermosNaoRespondidos";
 import Sidebar from "./components/Sidebar/Sidebar";
 
 const routes = ["/cadastro"];
@@ -27,6 +28,7 @@ ReactDOM.render(
         <Route path="/termo_uso" component={TermoUso} />
         <Route path="/cadastro" component={Cadastro} />
         <Route path="/admin" component={Backup} />
+        <Route path="/usuarios-termos-nao-respondidos" component={TermosNaoRespondidos} />
       </Switch>
     </BrowserRouter>
   </>,
