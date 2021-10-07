@@ -18,16 +18,11 @@ class AdminService {
   }
 
   async sendMail() {
-    return axios
-      .post(API_URL + 'sendMail', {
-
-      })
-      .then((response) => {
-        return response;
-      });
+    return axios.post(API_URL + 'admin/termo/enviar-emails', {})
+    .then(response => {
+      return response
+    })
   }
-
-
 
 }
 
