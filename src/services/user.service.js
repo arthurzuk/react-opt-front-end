@@ -1,7 +1,8 @@
 import axios from 'axios';
 import authHeader from './auth-header';
+import { environment } from '../environments/environment';
 
-const API_URL = 'http://localhost:8080/api/termo';
+const API_URL = environment.API_TERMO_URL;
 
 //código para conectar com o backend
 
