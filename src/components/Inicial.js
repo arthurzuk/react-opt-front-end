@@ -5,7 +5,7 @@ import './Inicial.css';
 export default function Inicial() {
   return (
     <>
-    <div class="center">
+    <div className="center">
         <span>Gymarker o seu app de agendamento de academia</span>
     </div>
         <Figure>
