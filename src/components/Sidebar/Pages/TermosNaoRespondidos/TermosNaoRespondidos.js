@@ -13,7 +13,7 @@ export function TermosNaoRespondidos() {
     async function listarUsuariosTermoNaoAtualizado() {
         await AdminService.listaUsuariosSemTermoAtualizado().then(
             res => {
-                setUsuarios(res)
+                setUsuarios(res.data)
             },
             (error) => {
                 const resMessage =
@@ -95,12 +95,10 @@ export function TermosNaoRespondidos() {
         )
     }
 
-    if (true) {
-        return(
-            <div>
-                {usuarios.length > 0 && mostrarTabelaUsuarios()}
-                {usuarios.length == 0 && mostrarMensagemZeroUsuarios()}
-            </div>
-        ) 
-    }
+    return (
+        <div>
+            {usuarios.length > 0 && mostrarTabelaUsuarios()}
+            {usuarios.length === 0 && mostrarMensagemZeroUsuarios()}
+        </div>
+    )
 }

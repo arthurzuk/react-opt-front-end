@@ -18,14 +18,16 @@ class AdminService {
   }
 
   async listaUsuariosSemTermoAtualizado() {
-    return axios.post(API_URL + 'admin/termo/listaUsuariosSemTermoAtualizado', {})
+    return axios.get(API_URL + 'admin/termo/listaUsuariosSemTermoAtualizado', {
+      headers: authHeader()
+    })
     .then(response => {
       return response
     })
   }
 
   async sendMail() {
-    return axios.post(API_URL + 'admin/termo/emailUsuariosSemTermoAtualizado', {})
+    return axios.post(API_URL + 'admin/termo/emailUsuariosSemTermoAtualizado', {}, {headers: authHeader()})
     .then(response => {
       return response
     })
