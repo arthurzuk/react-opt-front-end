@@ -9,7 +9,7 @@ export default function Sidebar() {
 
   if (login == true) {
     return (
-      <div class="main_container">
+      <div className="main_container">
         <Security />
       </div>
     );

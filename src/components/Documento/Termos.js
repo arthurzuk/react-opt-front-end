@@ -7,7 +7,7 @@ export default function Termos() {
   return (
     <div className="Termos">
         <div className="header">TERMOS E POLÍTICAS</div>
-        <div class="linha1"></div>
+        <div className="linha1"></div>
         <Container fluid="md">
             <Row>
                 <Col>
@@ -25,7 +25,7 @@ export default function Termos() {
                 </Col>
             </Row>
         </Container>
-        <div class="linha1"></div>
+        <div className="linha1"></div>
         <Container fluid="md">
             <Row>
                 <Col>

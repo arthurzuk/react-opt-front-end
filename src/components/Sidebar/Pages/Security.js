@@ -140,11 +140,11 @@ export function Security() {
   return (
     <div id="selected_menu">
       <div id="selected_title">
-        <label class="title">Segurança e Privacidade</label>
+        <label className="title">Segurança e Privacidade</label>
       </div>
 
-      <div class="content">
-        <label class="section_title">Dados Pessoais</label>
+      <div className="content">
+        <label className="section_title">Dados Pessoais</label>
         <br />
         <br />
 
@@ -157,7 +157,7 @@ export function Security() {
           <label>{state['errorMsg']} </label>
         </Form>
       </div>
-      <div class="separator" />
+      <div className="separator" />
     </div>
   );
 }
