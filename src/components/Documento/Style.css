@@ -1,3 +1,9 @@
+.TermoUso {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 16px 0;
+}
+
 @media all and (min-width: 480px) {
     .Termo {
       padding: 60px 0;

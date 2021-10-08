@@ -128,6 +128,14 @@ export default function TermoUso() {
         autorização expressa, podendo responder civil e criminalmente pelo
         mesmo.
       </li>
+      <p>
+      7.DA EXCLUSÃO DE DADOS
+      </p>
+    <li>
+      A LGPD em seu artigo 18, menciona que o titular poderá a qualquer momento
+      e mediante requisição, a eliminação dos dados pessoais tratados com o consentimento
+      do titular, exceto nas hipóteses previstas no art. 16 desta lei.
+    </li>
     </div>
   );
 }
