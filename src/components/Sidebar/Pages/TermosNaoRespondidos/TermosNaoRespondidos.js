@@ -64,7 +64,6 @@ export function TermosNaoRespondidos() {
     function mostrarTabelaUsuarios() {
         return (
             <>
-            <div className='container-table' >
                 <div align='right' className='button-enviar-emails'>
                     <Button variant="danger" onClick={handleEnviarEmais}>Enviar E-mails</Button>
                 </div>
@@ -80,7 +79,6 @@ export function TermosNaoRespondidos() {
                         {usuarios.length > 0 && listarUsuariosNaTabela()}
                     </tbody>
                 </Table>
-            </div>
             </>
         )
     }
@@ -97,8 +95,11 @@ export function TermosNaoRespondidos() {
 
     return (
         <div>
-            {usuarios.length > 0 && mostrarTabelaUsuarios()}
-            {usuarios.length === 0 && mostrarMensagemZeroUsuarios()}
+            <div className='container-table'>
+                <h3>Usuarios sem Termo de Uso Atualizado</h3>
+                {usuarios.length > 0 && mostrarTabelaUsuarios()}
+                {usuarios.length === 0 && mostrarMensagemZeroUsuarios()}
+            </div>
         </div>
     )
 }
