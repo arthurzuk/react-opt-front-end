@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
@@ -14,6 +14,13 @@ export default function Backup() {
   const [confirmation3, setConfirmation3] = useState(true);
   const history = useHistory();
   // var login = AuthService.authUser('adminAuth');
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (user.autorizacao !== "ROLE_ADMIN") {
+      return history.push('/');
+    }
+  });
 
   const handleSubmitEmail = async (e) => {
     e.preventDefault();
@@ -51,6 +58,25 @@ export default function Backup() {
           error.toString();
         alert(resMessage);
       }
+    );
+  };
+
+  const handleSubmitRestore = async (e) => {
+    e.preventDefault();
+
+    await AdminService.restore().then(
+        () => {
+          alert('Backup restaurado com sucesso');
+        },
+        (error) => {
+          const resMessage =
+              (error.response &&
+                  error.response.data &&
+                  error.response.data.message) ||
+              error.message ||
+              error.toString();
+          alert(resMessage);
+        }
     );
   };
 
@@ -112,6 +138,35 @@ export default function Backup() {
                 disabled={confirmation2}
               >
                 Realizar Backup
+              </Button>
+            </Row>
+          </Form>
+        </div>
+        <div className="form_spacer">
+          <div> Realizar restauração do backup</div>
+          <Form onSubmit={handleSubmitRestore}>
+            <Row>
+              <Form.Group as={Col} controlId="formGridEmail">
+                <Form.Control
+                    className="txt_submit"
+                    onChange={(e) => {
+                      if (e.target.value === 'Solicito a restauração do backup')
+                        setConfirmation3(false);
+                      else setConfirmation3(true);
+                    }}
+                    type="text"
+                />
+                <Form.Label>
+                  Digite 'Solicito a restauração do backup' para habilitar o botão
+                </Form.Label>
+              </Form.Group>
+              <Button
+                  className="btn_submit"
+                  variant="danger"
+                  type="submit"
+                  disabled={confirmation3}
+              >
+                Realizar restauração
               </Button>
             </Row>
           </Form>

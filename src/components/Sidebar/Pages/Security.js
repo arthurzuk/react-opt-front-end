@@ -4,6 +4,10 @@ import Form from 'react-bootstrap/Form';
 import UserService from '../../../services/user.service.js';
 import './Security.css';
 import { blocks_list } from './vars.js';
+import AdminService from "../../../services/admin.service";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import {useHistory} from "react-router-dom";
 
 class Contact_block extends React.Component {
   render() {
@@ -80,6 +84,8 @@ export function Security() {
     consentimentoNotificacaoSms: false,
     isLoading: true
   });
+    const [confirmation1, setConfirmation1] = useState(true);
+    const history = useHistory();
 
 
   if (state['isLoading']) {
@@ -137,6 +143,27 @@ export function Security() {
     );
   };
 
+    const handleSubmitDelete = async (e) => {
+        e.preventDefault();
+
+        await UserService.excluir().then(
+            () => {
+                alert('Dados excluídos com sucesso');
+                localStorage.clear();
+                history.push("/");
+            },
+            (error) => {
+                const resMessage =
+                    (error.response &&
+                        error.response.data &&
+                        error.response.data.message) ||
+                    error.message ||
+                    error.toString();
+                alert(resMessage);
+            }
+        );
+    };
+
   return (
     <div id="selected_menu">
       <div id="selected_title">
@@ -158,6 +185,38 @@ export function Security() {
         </Form>
       </div>
       <div className="separator" />
+        <div className="Admin">
+            <div className="form_spacer">
+                <div> Excluir conta e dados pessoais? </div>
+                <Form onSubmit={handleSubmitDelete}>
+                    <Row>
+                        <Form.Group as={Col} controlId="formGridEmail">
+                            <Form.Control
+                                className="txt_submit"
+                                onChange={(e) => {
+                                    if (e.target.value === 'Deletar conta')
+                                        setConfirmation1(false);
+                                    else setConfirmation1(true);
+                                }}
+                                type="text"
+                            />
+                            <Form.Label>
+                                Digite 'Deletar conta' para habilitar o botão
+                            </Form.Label>
+                        </Form.Group>
+                        <Button
+                            className="btn_submit"
+                            variant="danger"
+                            type="submit"
+                            disabled={confirmation1}
+                        >
+                            Deletar conta
+                        </Button>
+                    </Row>
+                </Form>
+            </div>
+        </div>
     </div>
+
   );
 }

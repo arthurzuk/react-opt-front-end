@@ -16,8 +16,13 @@ export default function Login() {
     e.preventDefault();
 
     AuthService.login(email, password).then(
-      () => {
-        history.push('/');
+      (response) => {
+        console.log(response);
+        if (response.autorizacao === "ROLE_ADMIN") {
+          history.push('/admin');
+        } else {
+          history.push('/');
+        }
       },
       (error) => {
         const resMessage =

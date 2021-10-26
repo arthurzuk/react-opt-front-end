@@ -9,12 +9,18 @@ const API_URL = environment.API_URL;
 class AdminService {
   async backup() {
     return axios
-      .post(API_URL + 'backup', {
-
-      })
+      .get(API_URL + 'backup', {headers: authHeader()})
       .then((response) => {
         return response;
       });
+  }
+
+  async restore() {
+    return axios
+        .get(API_URL + 'backup/restore', {headers: authHeader()})
+        .then((response) => {
+          return response;
+        });
   }
 
   async listaUsuariosSemTermoAtualizado() {

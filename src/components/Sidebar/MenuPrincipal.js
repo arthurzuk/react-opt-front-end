@@ -4,8 +4,8 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import AuthService from '../../services/auth.service.js';
 
-export default function Menu({ login }) {
-  // var login = AuthService.authUser();
+export default function Menu() {
+  var login = AuthService.authUser();
 
   return (
     <div>
@@ -21,14 +21,14 @@ export default function Menu({ login }) {
                 Termos e Políticas
               </Nav.Link>
             </Nav>
-            {login === true && (
+            {login && (
               <Nav>
                 <Nav.Link eventKey={2} href="/seguranca">
                   Segurança e Privacidade
                 </Nav.Link>
               </Nav>
             )}
-            {login !== true && (
+            {!login && (
               <Nav>
                 <Nav.Link eventKey={2} href="/login">
                   Login

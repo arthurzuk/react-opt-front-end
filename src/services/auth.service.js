@@ -34,16 +34,9 @@ class AuthService {
       });
   }
 
-  // async authUser(answerType) {
-  //       return axios
-  //           .post(API_URL + 'auth', {
-  //               user: JSON.parse(localStorage.getItem('user')),
-  //               answerType: answerType,
-  //           })
-  //           .then((response) => {
-  //               return response;
-  //           });
-  //   }
+  async authUser() {
+        return JSON.parse(localStorage.getItem('user'));
+    }
 
   logout() {
     localStorage.removeItem('user');

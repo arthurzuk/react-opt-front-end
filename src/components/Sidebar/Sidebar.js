@@ -5,9 +5,9 @@ import { useHistory } from 'react-router-dom';
 
 export default function Sidebar() {
   const history = useHistory();
-  var login = AuthService.getCurrentUser();
+  var user = AuthService.authUser();
 
-  if (login == true) {
+  if (user) {
     return (
       <div className="main_container">
         <Security />
