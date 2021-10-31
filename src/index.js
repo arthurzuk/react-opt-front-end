@@ -12,6 +12,7 @@ import MenuPrincipal from "./components/Sidebar/MenuPrincipal";
 import Backup from "./components/Sidebar/Pages/Backup/Backup";
 import { TermosNaoRespondidos } from "./components/Sidebar/Pages/TermosNaoRespondidos/TermosNaoRespondidos";
 import Sidebar from "./components/Sidebar/Sidebar";
+import Dev from "./components/Sidebar/Pages/Dev/Dev";
 
 const routes = ["/cadastro"];
 
@@ -29,6 +30,7 @@ ReactDOM.render(
         <Route path="/cadastro" component={Cadastro} />
         <Route path="/admin" component={Backup} />
         <Route path="/usuarios-termos-nao-respondidos" component={TermosNaoRespondidos} />
+        <Route path="/dev" component={Dev} />
       </Switch>
     </BrowserRouter>
   </>,
