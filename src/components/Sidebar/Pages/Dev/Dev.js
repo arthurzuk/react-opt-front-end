@@ -3,37 +3,75 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
-import { useHistory } from 'react-router-dom';
 import AdminService from '../../../../services/admin.service.js';
 import './Dev.css';
 
 
 export default function Backup() {
   const [confirmation1, setConfirmation1] = useState(true);
-  const [usuario, setUsuario] = useState('');
-
-  const history = useHistory();
-  // var login = AuthService.authUser('adminAuth');
-
-  /*
+  const [password, setPassword] = useState('');
+  const [horas, setHoras] = useState('');
+  const [user_id, setUserId] = useState('');
+  const [usuarios, setUsuarios] = useState([]);
   useEffect(() => {
-    try {
-      const user = JSON.parse(localStorage.getItem('user'));
-      if (user.autorizacao !== 'ROLE_ADMIN') {
-        return history.push('/');
-      }
-    } catch {
-      return history.push('/');
-    }
-  });
-  */
+      listarDevs();
+  }, []);
+
+  async function listarDevs() {
+      await AdminService.getDevs().then(
+          res => {
+              setUsuarios(res.data)
+          },
+          (error) => {
+              const resMessage =
+                  (error.response &&
+                      error.response.data &&
+                      error.response.data.message) ||
+                  error.message ||
+                  error.toString();
+              alert(resMessage);
+          }
+      )
+  }
+
+
+  function renderSelect() {
+      return (
+          <div className="form_spacer">
+              <Form.Group controlId="formBasicSelect">
+                  <Form.Label>Selecione o usuário</Form.Label>
+                  <Form.Control
+                      as="select"
+                      value={user_id}
+                      onChange={e => {
+                          setUserId(e.target.value);
+                      }}
+                  >
+                      <option value={0}>Selecione o usuário</option>
+                      {usuarios.length > 0 && listarUsuariosNoSelect()
+                      })}
+                  </Form.Control>
+              </Form.Group>
+          </div>
+      )
+  }
+
+  function listarUsuariosNoSelect() {
+    return (
+        usuarios.map(usuario => {
+            return (
+                <option value={usuario.id} key={usuario.id}>{usuario.nome}</option>
+            )
+        })
+    )
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    await AdminService.createDev().then(
+    await AdminService.createDev(user_id, horas, password).then(
       () => {
-        alert('Conta dev criada com sucesso');
+        alert('Credencial dev criada com sucesso');
       },
       (error) => {
         const resMessage =
@@ -53,42 +91,41 @@ export default function Backup() {
         <div className="form_spacer">
           
           <Form onSubmit={handleSubmit}>
-          <div className="form_spacer">
-            <Form.Group>
-            <Form.Control
-                  className="txt_submit"
-                  onChange={(e) => {
-                      setUsuario(e.target.value);
-                  }}
-                  type="text"
-                />
-                <Form.Label>
-                  Insira o nome de usuário da conta a ser modificada para conta dev
-                </Form.Label>
-              </Form.Group>
-          </div>
+              {usuarios.length > 0 && renderSelect()}
+              <div className="form_spacer">
+                  <Form.Group>
+
+                      <Form.Control
+                          className="txt_submit"
+                          onChange={(e) => {
+                              setPassword(e.target.value);
+                          }}
+                          type="text"
+                      />
+                      <Form.Label>
+                          Insira a a senha a ser utilizada
+                      </Form.Label>
+                  </Form.Group>
+              </div>
             <Row>
               <Form.Group as={Col} controlId="formGridEmail">
                 <Form.Control
                   className="txt_submit"
                   onChange={(e) => {
-                    if (e.target.value === 'Solicito a criação da conta dev')
-                      setConfirmation1(false);
-                    else setConfirmation1(true);
+                      setHoras(e.target.value);
                   }}
-                  type="text"
+                  type="number"
                 />
                 <Form.Label>
-                  Digite 'Solicito a criação da conta dev' para habilitar o botão
+                  Horas até credencial expirar
                 </Form.Label>
               </Form.Group>
               <Button
                 className="btn_submit"
                 variant="danger"
                 type="submit"
-                disabled={confirmation1}
               >
-                Criar conta dev
+                Criar credencial
               </Button>
             </Row>
           </Form>

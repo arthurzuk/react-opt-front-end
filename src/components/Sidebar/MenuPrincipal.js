@@ -6,6 +6,10 @@ import AuthService from '../../services/auth.service.js';
 
 export default function Menu() {
   var login = AuthService.authUser();
+  var admin = null;
+  if (login) {
+    admin = login.autorizacao === 'ROLE_ADMIN';
+  }
 
   return (
     <div>
@@ -28,7 +32,14 @@ export default function Menu() {
                 </Nav.Link>
               </Nav>
             )}
-            {!login && (
+            {admin && (
+                <Nav>
+                  <Nav.Link eventKey={2} href="/dev">
+                    Credenciais
+                  </Nav.Link>
+                </Nav>
+            )}
+            {login === null && (
               <Nav>
                 <Nav.Link eventKey={2} href="/login">
                   Login

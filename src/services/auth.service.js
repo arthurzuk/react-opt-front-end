@@ -34,9 +34,27 @@ class AuthService {
       });
   }
 
-  async authUser() {
-        return JSON.parse(localStorage.getItem('user'));
+  authUser() {
+      var token = JSON.parse(localStorage.getItem('user'))
+      if (token) {
+          var jwt = this.parseJwt(token.token);
+          if (Date.now() >= jwt.exp * 1000) {
+              localStorage.clear();
+              return null;
+          }
+      }
+      return token;
     }
+
+    parseJwt (token) {
+      var base64Url = token.split('.')[1];
+      var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+      var jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+          return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+      }).join(''));
+
+      return JSON.parse(jsonPayload);
+    };
 
   logout() {
     localStorage.removeItem('user');
