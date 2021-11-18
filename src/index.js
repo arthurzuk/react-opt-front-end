@@ -28,9 +28,7 @@ ReactDOM.render(
         <Route path="/privacidade" component={Privacidade} />
         <Route path="/termo_uso" component={TermoUso} />
         <Route path="/cadastro" component={Cadastro} />
-        <Route path="/admin" component={Backup} />
         <Route path="/usuarios-termos-nao-respondidos" component={TermosNaoRespondidos} />
-        <Route path="/dev" component={Dev} />
       </Switch>
     </BrowserRouter>
   </>,

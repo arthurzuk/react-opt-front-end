@@ -7,7 +7,7 @@ import AdminService from '../../../../services/admin.service.js';
 import './Dev.css';
 
 
-export default function Backup() {
+export function Dev() {
   const [confirmation1, setConfirmation1] = useState(true);
   const [password, setPassword] = useState('');
   const [horas, setHoras] = useState('');
@@ -49,7 +49,7 @@ export default function Backup() {
                   >
                       <option value={0}>Selecione o usuário</option>
                       {usuarios.length > 0 && listarUsuariosNoSelect()
-                      })}
+                      })
                   </Form.Control>
               </Form.Group>
           </div>

@@ -8,7 +8,7 @@ import AdminService from '../../../../services/admin.service.js';
 import './Backup.css';
 
 
-export default function Backup() {
+export function Backup() {
   const [confirmation1, setConfirmation1] = useState(true);
   const [confirmation2, setConfirmation2] = useState(true);
   const [confirmation3, setConfirmation3] = useState(true);
