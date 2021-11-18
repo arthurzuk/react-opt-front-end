@@ -2,8 +2,7 @@ import axios from 'axios';
 import authHeader from './auth-header';
 import { environment } from '../environments/environment';
 
-const API_URL = environment.API_TERMO_URL;
-const API_URL_DELETE = environment.API_URL + "usuario/excluir";
+const API_URL = environment.API_URL;
 
 //código para conectar com o backend
 
@@ -20,7 +19,7 @@ class UserService {
     } = state;
     return axios
       .put(
-        API_URL,
+        API_URL + 'termo',
         {
           consentimentoNotificacaoEmail,
           consentimentoConfirmacaoEmail,
@@ -39,22 +38,19 @@ class UserService {
       });
   }
 
-    async excluir() {
-        return axios
-            .delete(
-                API_URL_DELETE ,
-                {
-                    headers: authHeader(),
-                }
-            )
-            .then((response) => {
-                return response.data;
-            });
-    }
+  async excluir() {
+    return axios
+      .delete(API_URL + 'usuario/excluir', {
+        headers: authHeader(),
+      })
+      .then((response) => {
+        return response.data;
+      });
+  }
 
   async getConfigs(state) {
     return axios
-      .get(API_URL, {
+      .get(API_URL + 'usuario/termo', {
         headers: authHeader(),
       })
       .then((response) => {

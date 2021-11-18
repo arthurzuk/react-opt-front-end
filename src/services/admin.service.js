@@ -47,20 +47,17 @@ class AdminService {
 
   async getDevs() {
     return axios
-        .get(
-            API_URL + 'usuario/admin/listar/role_dev',
-            { headers: authHeader() }
-        )
-        .then((response) => {
-          return response;
-        });
+      .get(API_URL + 'usuario/admin/listar/role_dev', { headers: authHeader() })
+      .then((response) => {
+        return response;
+      });
   }
 
   async createDev(user_id, horas, password) {
     return axios
       .post(
         API_URL + 'admin/credencial',
-        { user_id: user_id, horas : horas, password : password },
+        { user_id: user_id, horas: horas, password: password },
         { headers: authHeader() }
       )
       .then((response) => {
