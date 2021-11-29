@@ -60,10 +60,10 @@ export default function Sidebar() {
   const [currentTab, setCurrentTab] = useState('1');
   var login = AuthService.authUser();
   if (login) {
-    admin = login.autorizacao === 'ROLE_ADMIN';
+    var admin = login.autorizacao === 'ROLE_ADMIN';
     return (
       <div
-        style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr' }}
+        style={{ display: 'grid', gridTemplateColumns: 'repeat(2, auto 1fr' }}
         className="main_container"
       >
         {Sidebar_Component(admin, login, setCurrentTab)}
