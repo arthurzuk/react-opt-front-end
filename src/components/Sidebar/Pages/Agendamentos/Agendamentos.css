@@ -1,5 +1,7 @@
 .wrapper {
   display: grid;
+
+  /* mude a primeira variável no repeat para a quantidade de colunas */
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: 40px 100px 40 px;
 }

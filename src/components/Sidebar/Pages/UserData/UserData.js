@@ -4,58 +4,49 @@ import AuthService from '../../../../services/auth.service.js';
 import UserService from '../../../../services/user.service.js';
 import './UserData.css';
 
-function addTermoAceite(params) {
-  var html = [];
-  params.forEach(e => {
-    html.push(
-      <tr>
-        <td>{e.consentimentoEndereco ? "Aceito": "Não aceito"}</td>
-        <td>{e.consentimentoContatoEmail ? "Aceito": "Não aceito"}</td>
-        <td>{e.consentimentoContatoTel ? "Aceito": "Não aceito"}</td>
-        <td>{e.criacao}</td>
-        <td>{e.atualizado}</td>
-      </tr>
-    )
-  });
+function addTermoAceite(e) {
+  var html = [
+    <div class={e.consentimentoEndereco ? 'aceito' : 'n_aceito'}>
+      {e.consentimentoEndereco ? 'Aceito' : 'Não aceito'}
+    </div>,
+    <div class={e.consentimentoEndereco ? 'aceito' : 'n_aceito'}>
+      {e.consentimentoContatoEmail ? 'Aceito' : 'Não aceito'}
+    </div>,
+    <div class={e.consentimentoEndereco ? 'aceito' : 'n_aceito'}>
+      {e.consentimentoContatoTel ? 'Aceito' : 'Não aceito'}
+    </div>,
+    <div>{e.criacao}</div>,
+    <div>{e.atualizado}</div>,
+  ];
 
   return (
-    <table>
-    <thead>
-      <tr>
-        <th>Endereco</th>
-        <th>Email</th>
-        <th>Telefone</th>
-        <th>Data criação</th>
-        <th>Data atualização</th>
-      </tr>
-      </thead>
-    <tbody>
+    <div class="wrapper">
+      <div class="head">Endereco</div>
+      <div class="head">Email</div>
+      <div class="head">Telefone</div>
+      <div class="head">Data criação</div>
+      <div class="head">Data atualização</div>
       {html}
-    </tbody>
-    </table>
-  )
+    </div>
+  );
 }
 
-export default function UserData() {
+export function UserData() {
   const [termoAceiteLista, setTermoAceiteLista] = useState([{}]);
-
-  useEffect(() => {
-    const addUserDataAPI = async () => {
-      var data = await UserService.userDataGet();
-      setTermoAceiteLista(data.termosUsuario);
-    }
-    addUserDataAPI();
-  }, []);
-
   const history = useHistory();
   var login = AuthService.authUser();
-  if (login) {
-    return (
-      <div id="user_data">
-        {addTermoAceite(termoAceiteLista)}
-      </div>
-    );
-  } else {
-    history.push("/");
-  }
+
+  useEffect(() => {
+    if (login) {
+      const addUserDataAPI = async () => {
+        var data = await UserService.userDataGet();
+        setTermoAceiteLista(data.termosUsuario);
+      };
+      addUserDataAPI();
+    } else {
+      history.push('/');
+    }
+  }, []);
+
+  return <div id="user_data">{addTermoAceite(termoAceiteLista)}</div>;
 }
