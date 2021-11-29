@@ -1,6 +1,6 @@
 import axios from 'axios';
-import authHeader from './auth-header';
 import { environment } from '../environments/environment';
+import authHeader from './auth-header';
 
 const API_URL = environment.API_URL;
 
@@ -51,6 +51,16 @@ class UserService {
   async getConfigs(state) {
     return axios
       .get(API_URL + 'usuario/termo', {
+        headers: authHeader(),
+      })
+      .then((response) => {
+        return response.data;
+      });
+  }
+
+  async userDataGet() {
+    return axios
+      .get(API_URL + 'usuario/relatorio', {
         headers: authHeader(),
       })
       .then((response) => {
