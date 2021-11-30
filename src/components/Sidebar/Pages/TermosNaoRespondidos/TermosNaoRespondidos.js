@@ -2,11 +2,17 @@ import { useEffect, useState } from "react";
 import { Table, Button, Alert } from "react-bootstrap";
 import './termosNaoRespondidos.css'
 import AdminService from '../../../../services/admin.service.js';
+import { useHistory } from 'react-router-dom';
 
 export function TermosNaoRespondidos() {
     const [usuarios, setUsuarios] = useState([])
+    const history = useHistory(); 
 
     useEffect(() => {
+        const user = JSON.parse(localStorage.getItem('user'));
+        if (user.autorizacao !== "ROLE_ADMIN") {
+          return history.push('/');
+        }
         listarUsuariosTermoNaoAtualizado()
     }, [])
 
