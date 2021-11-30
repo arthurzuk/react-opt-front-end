@@ -4,6 +4,7 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import AdminService from '../../../../services/admin.service.js';
+import { useHistory } from 'react-router-dom';
 import './Dev.css';
 
 export function Dev() {
@@ -12,7 +13,13 @@ export function Dev() {
   const [horas, setHoras] = useState('');
   const [user_id, setUserId] = useState('');
   const [usuarios, setUsuarios] = useState([]);
+  const history = useHistory();
+  
   useEffect(() => {
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (user.autorizacao !== "ROLE_ADMIN") {
+      return history.push('/');
+    }
     listarDevs();
   }, []);
 
