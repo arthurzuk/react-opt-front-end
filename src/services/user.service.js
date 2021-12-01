@@ -67,6 +67,16 @@ class UserService {
         return response.data;
       });
   }
+
+  async getNotify() {
+    return axios
+      .get(API_URL + 'usuario/checar/termo', {
+        headers: authHeader(),
+      })
+      .then((response) => {
+        return response.data;
+      });
+  }
 }
 
 export default new UserService();
