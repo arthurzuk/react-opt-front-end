@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
+import Col from "react-bootstrap/Col";
 import Form from 'react-bootstrap/Form';
+import Row from "react-bootstrap/Row";
+import { useHistory } from "react-router-dom";
 import UserService from '../../../services/user.service.js';
 import './Security.css';
 import { blocks_list } from './vars.js';
-import AdminService from "../../../services/admin.service";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import {useHistory} from "react-router-dom";
 
 class Contact_block extends React.Component {
   render() {
@@ -99,7 +98,7 @@ export function Security() {
                   telefone : response.usuario.telefone,
                   consentimentoConfirmacaoSms : response.consentimentoConfirmacaoSms,
                   consentimentoNotificicacaoSms : response.consentimentoNotificicacaoSms,
-                  logradouro : response.usuario.endereco.logradouro,
+                  logradouro : response.usuario.endereco ? response.usuario.endereco.logradouro : '',
                   isLoading : false
                 }));
       },

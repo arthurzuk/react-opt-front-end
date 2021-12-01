@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import { Security } from './Pages/Security';
-import { Dev } from './Pages/Dev/Dev';
-import { Backup } from './Pages/Backup/Backup';
-import { UserData } from './Pages/UserData/UserData';
-import { Agendamentos } from './Pages/Agendamentos/Agendamentos';
-import AuthService from '../../services/auth.service.js';
 import { useHistory } from 'react-router-dom';
+import AuthService from '../../services/auth.service.js';
+import { Backup } from './Pages/Backup/Backup';
+import { Dev } from './Pages/Dev/Dev';
+import { Security } from './Pages/Security';
+import { UserData } from './Pages/UserData/UserData';
 
 function Sidebar_Component(admin, login, setState) {
   return (
@@ -13,11 +12,6 @@ function Sidebar_Component(admin, login, setState) {
       <div style={{ margin: '10px' }} onClick={() => setState('1')}>
         Segurança e Privacidade
       </div>
-      {login && (
-        <div style={{ margin: '10px' }} onClick={() => setState('2')}>
-          Agendamentos
-        </div>
-      )}
       {login && (
         <div style={{ margin: '10px' }} onClick={() => setState('3')}>
           Dados do usuário
@@ -41,8 +35,6 @@ function loadTab(state) {
   switch (state) {
     case '1':
       return <Security />;
-    case '2':
-      return <Agendamentos />;
     case '3':
       return <UserData />;
     case '4':

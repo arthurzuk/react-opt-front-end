@@ -10,7 +10,9 @@ import TermoUso from './components/Documento/TermoUso';
 import Login from './components/Login/Login';
 import MenuPrincipal from './components/Sidebar/MenuPrincipal';
 import { TermosNaoRespondidos } from './components/Sidebar/Pages/TermosNaoRespondidos/TermosNaoRespondidos';
+import { UserData } from './components/Sidebar/Pages/UserData/UserData';
 import Sidebar from './components/Sidebar/Sidebar';
+
 
 const routes = ['/cadastro'];
 
@@ -22,6 +24,7 @@ ReactDOM.render(
         <Route path="/" exact={true} component={App} />
         <Route path="/seguranca" component={Sidebar} />
         <Route path="/login" component={Login} />
+        <Route path="/dados" component={UserData} />
         <Route path="/politicas" component={Termos} />
         <Route path="/privacidade" component={Privacidade} />
         <Route path="/termo_uso" component={TermoUso} />
